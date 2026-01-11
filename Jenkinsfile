@@ -10,7 +10,7 @@ pipeline {
                 }
             }
             steps {
-                sh'''
+                sh '''
                     ls -la
                     node --version
                     npm --version
@@ -18,13 +18,13 @@ pipeline {
                     npm run build
                     ls -la
                 '''
-            
             }
         }
+
         stage('Test') {
             steps {
                 sh 'test -f build/index.html'
             }
-            
-    }
-}
+        } // <--- 'Test' 스테이지를 닫는 중괄호
+    } // <--- 모든 stages를 닫는 중괄호
+} // <--- 전체 pipeline을 닫는 중괄호
